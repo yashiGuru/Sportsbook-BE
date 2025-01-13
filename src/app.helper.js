@@ -1,6 +1,8 @@
 import { SERVER } from "./v1/utils/constant";
 import { isEmpty } from "./v1/utils/helper";
 
+import { sportsBookDatabase } from "../database/mysql";
+
 export const setLanguage = (req, res, next) => {
     if (!isEmpty(req.headers.lang)) {
         req.setLocale(req.headers.lang);
@@ -31,7 +33,7 @@ export const setAPIVersion = (req, res, next) => {
     const pathParts = req.originalUrl.split("/");
     const apiV = pathParts.filter((p) => apiVersions.includes(p))[0];
     if (!apiV) {
-        return res.status(422).json({ apiStatus: "DEPRICATED" });
+        return res.status(422).json({ apiStatus: "DEPRECATED" });
     }
     res.set("API-Version", apiV);
     res.set("ServerTimeZone", TZ);
@@ -92,5 +94,11 @@ export const onError = (error) => {
 
 // Event listener for HTTP server "listening" event.
 export const onListening = () => {
-    console.log(`${SERVER.NAME} ⚾️ server is ⚽️ running 🎾 on 🏈 ${SERVER.PATH}`);
+    try {
+        console.info(`${SERVER.NAME} ⚾️ server is ⚽️ running 🎾 on 🏈 ${SERVER.PATH}`);
+        sportsBookDatabase.authenticate();
+        console.info(`🐬 MySQL Database Connection: Successfully connected to ${process.env.SPORTS_BOOK_DATABASE_NAME} database! 🚀`);
+    } catch (error) {
+        console.error('❌ Error:', error.message);
+    }
 }
