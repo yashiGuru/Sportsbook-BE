@@ -1,0 +1,33 @@
+{
+    "name": "sportbook",
+    "version": "1.0.0",
+    "description": "",
+    "main": "dist/back.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "watch": "webpack --mode=development --watch --progress --stats-error-details --config webpack/index.js",
+        "dev": "nodemon --ignore 'full.*.json' --ignore 'web.*.json' --ignore 'src/locales/*.json' -r dotenv/config dist/back.js"
+    },
+    "author": "Yash Kumbhani",
+    "license": "ISC",
+    "dependencies": {
+        "compression": "^1.7.5",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "helmet": "^8.0.0",
+        "http-errors": "^2.0.0",
+        "i18n": "^0.15.1",
+        "lodash": "^4.17.21",
+        "morgan": "^1.10.0",
+        "sequelize": "^6.37.5"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.26.0",
+        "@babel/preset-env": "^7.26.0",
+        "babel-loader": "^9.2.1",
+        "webpack": "^5.97.1",
+        "webpack-cli": "^6.0.1",
+        "webpack-dev-server": "^5.2.0"
+    }
+}

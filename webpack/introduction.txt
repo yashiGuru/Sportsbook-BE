@@ -1,0 +1,11 @@
+1.  Install Webpack and Webpack CLI
+        Install Webpack along with its command-line interface (CLI): npm install webpack webpack-cli --save-dev
+2.  Create a Webpack Configuration File & Folder
+3.  Add code in the webpack >> index.js File
+4.  Watch Script 
+        Add a build script to your package.json file: "watch": "webpack --mode=development --watch --progress --stats-error-details --config webpack/index.js",
+5.  Run Webpack
+        npm run watch
+6.  Optional: Install Loaders and Plugins
+        Depending on your project, you might need additional loaders or plugins. For example:
+        Babel Loader (for ES6+): npm install babel-loader @babel/core @babel/preset-env --save-dev
