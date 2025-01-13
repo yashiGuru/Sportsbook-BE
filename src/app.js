@@ -9,7 +9,7 @@ import compression from "compression";
 import { createServer } from "http";
 
 import { errorHandler, normalizePort, onError, onListening, setAPIVersion, setLanguage } from "./app.helper";
-import { SERVER } from "./v1/utils/contant";
+import { SERVER } from "./v1/utils/constant";
 import i18n from "./v1/config/i18n";
 
 const app = express();

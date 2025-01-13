@@ -1,4 +1,4 @@
-import { SERVER } from "./v1/utils/contant";
+import { SERVER } from "./v1/utils/constant";
 import { isEmpty } from "./v1/utils/helper";
 
 export const setLanguage = (req, res, next) => {

@@ -1,6 +1,6 @@
 import i18n from 'i18n';
 import path from 'path';
-import { LANGUAGE } from '../utils/contant';
+import { LANGUAGE } from '../utils/constant';
 
 i18n.configure({
     locales: LANGUAGE.ALLOWED,
