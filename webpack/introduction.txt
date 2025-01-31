@@ -2,6 +2,51 @@
         Install Webpack along with its command-line interface (CLI): npm install webpack webpack-cli --save-dev
 2.  Create a Webpack Configuration File & Folder
 3.  Add code in the webpack >> index.js File
+
+const path = require("path");
+const fs = require("fs");
+
+//To Exclude Node Modules In Webpack Bundling
+const nodeModules = {};
+fs.readdirSync("node_modules")
+    .filter(function (x) {
+        return [".bin"].indexOf(x) === -1;
+    })
+    .forEach(function (mod) {
+        nodeModules[mod] = "commonjs " + mod;
+    });
+
+module.exports = {
+    mode: "production",
+    entry: {
+        back: ["./src/app.js"]
+    },
+    output: {
+        path: path.resolve(__dirname, "../dist"),
+        filename: "[name].js"
+    },
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                loader: "babel-loader"
+            }
+        ]
+    },
+    resolve: {
+        alias: {
+            root: path.resolve(__dirname, "../"),
+        }
+    },
+    target: "node",
+    externals: [nodeModules, "server"],
+    node: {
+        __dirname: false,
+        __filename: false
+    }
+};
+
 4.  Watch Script 
         Add a build script to your package.json file: "watch": "webpack --mode=development --watch --progress --stats-error-details --config webpack/index.js",
 5.  Run Webpack
