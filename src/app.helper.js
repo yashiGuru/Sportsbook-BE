@@ -99,6 +99,6 @@ export const onListening = () => {
         sportsBookDatabase.authenticate();
         console.info(`🐬 MySQL Database Connection: Successfully connected to ${process.env.SPORTS_BOOK_DATABASE_NAME} database! 🚀`);
     } catch (error) {
-        console.error('❌ Error:', error.message);
+        console.error('❌ 🐬 MySQL Database Connection Error:', error.message);
     }
 }
